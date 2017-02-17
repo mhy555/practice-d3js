@@ -5,9 +5,15 @@ var webpack = require("webpack"),
   OpenBrowserPlugin = require('open-browser-webpack-plugin'),
   isDev = process.env.NODE_ENV === 'development',
   isProd = process.env.NODE_ENV === 'production',
+  autoprefixer = require('autoprefixer'),
   webpackConfig;
 
 webpackConfig = {
+    postcss: function () {
+      return {
+        defaults: [autoprefixer]
+      }
+    },
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
